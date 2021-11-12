@@ -81,7 +81,7 @@ def main():
         problem_3()
     elif a == '4':
         problem_4()
-    else: print("Exception: Your input must be 1 from 4!!!")
+    else: print("Exception: Your input must be from 1 to 4!!!")
 
 if __name__ == "__main__":
     main()
