@@ -41,40 +41,100 @@ canvas.create_text(500, 140, fill = "dimgrey", font = "Arial 14", text = "inside
 canvas.create_text(900, 140, fill = "dimgrey", font = "Arial 14", text = "done")
 
 def startclick():
-    pass
+    if wait.get("1.0", END) == "\n":
+        messagebox.showerror("Error!!!", "Please input before firing.")
+        return 
+    
+    wait.config(state = "normal")
+    inside.config(state = "normal")
+
+    a = int(wait.get("1.0", END))
+    b = int(inside.get("1.0", END))
+
+    if a == 0:
+        messagebox.showerror("Error!!!", "There are no tokens in the place wait.")
+        return
+
+    wait.delete("1.0", END)
+    inside.delete("1.0", END)
+
+    wait.insert(END, a - 1)
+    inside.insert(END, b + 1)
+
+    wait.config(state = "disabled")
+    inside.config(state = "disabled")
 
 def changeclick():
-    pass
+    if inside.get("1.0", END) == "\n":
+        messagebox.showerror("Error!!!", "Please input before firing.")
+        return
+
+    inside.config(state = "normal")
+    done.config(state = "normal")
+
+    a = int(inside.get("1.0", END))
+    b = int(done.get("1.0", END))
+
+    if a == 0:
+        messagebox.showerror("Error!!!", "There are no tokens in the place change.")
+        return
+
+    inside.delete("1.0", END)
+    done.delete("1.0", END)
+
+    inside.insert(END, a - 1)
+    done.insert(END, b + 1)
+
+    inside.config(state = "disabled")
+    done.config(state = "disabled")
 
 def enter():
-    a = int(input_wait.get())
-    b = int(input_inside.get())
-    c = int(input_done.get())
+    a = input_wait.get()
+    b = input_inside.get()
+    c = input_done.get()
+
     input_wait.delete(0, END)
     input_inside.delete(0, END)
     input_done.delete(0, END)
+
+    wait.config(state = "normal")
+    inside.config(state = "normal")
+    done.config(state = "normal")
+
+    wait.delete("1.0", END)
+    inside.delete("1.0", END)
+    done.delete("1.0", END)
+
+    if a.isnumeric() == False or b.isnumeric() == False or c.isnumeric() == False:
+        messagebox.showerror("Exception!!!", "Your input is not a number.")
+        return
+
+    a = int(a)
+    b = int(b)
+    c = int(c)
 
     if a < 0 or b < 0 or c < 0:
         messagebox.showerror("Exception!!!", "The numbers of tokens must be positive.")
         return
     
-    free = Text(frame, font = "Arial 10", bg = "silver", width = 6, height = 1, fg = "navy")
-    free.pack()
-    free.insert(END, a)
-    free.config(state = "disabled")
-    free.place(x = 78, y = 90)
+    wait.pack()
+    wait.insert(END, a)
+    wait.config(state = "disabled")
+    wait.place(x = 78, y = 90)
 
-    inside = Text(frame, font = "Arial 10", bg = "silver", width = 6, height = 1, fg = "navy")
     inside.pack()
     inside.insert(END, b)
     inside.config(state = "disabled")
     inside.place(x = 478, y = 90)
 
-    done = Text(frame, font = "Arial 10", bg = "silver", width = 6, height = 1, fg = "navy")
     done.pack()
     done.insert(END, c)
     done.config(state = "disabled")
     done.place(x = 878, y = 90)
+
+wait = Text(frame, font = "Arial 10", bg = "silver", width = 6, height = 1, fg = "navy")
+inside = Text(frame, font = "Arial 10", bg = "silver", width = 6, height = 1, fg = "navy")
+done = Text(frame, font = "Arial 10", bg = "silver", width = 6, height = 1, fg = "navy")
 
 transition1 = Button(frame, text = "start", font = "Arial 14", fg = "steelblue", bg = "aqua", padx = 10, pady = 10, command = startclick)
 transition1.pack()
@@ -99,15 +159,15 @@ L_done = Label(frame_input, text = "Done: ", font = "Arial 14")
 L_done.pack()
 L_done.place(y = 150)
 
-input_wait = Entry(frame_input, width = 60, bg = "snow")
+input_wait = Entry(frame_input, width = 55, bg = "snow")
 input_wait.pack()
 input_wait.place(x = 70, y = 55)
 
-input_inside = Entry(frame_input, width = 60, bg = "snow")
+input_inside = Entry(frame_input, width = 55, bg = "snow")
 input_inside.pack()
 input_inside.place(x = 70, y = 105)
 
-input_done = Entry(frame_input, width = 60, bg = "snow")
+input_done = Entry(frame_input, width = 55, bg = "snow")
 input_done.pack()
 input_done.place(x = 70, y = 155)
 
