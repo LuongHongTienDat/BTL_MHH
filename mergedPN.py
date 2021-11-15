@@ -75,7 +75,9 @@ def startclick():
     busy.config(state="normal")
     inside.config(state="normal")
 
-
+    if free.get("1.0", END) == '\n':
+        messagebox.showerror("Error!!!", "Please input before firing.")
+        return
 
     a = int(wait.get("1.0", END))
     b = int(free.get("1.0", END))
@@ -130,6 +132,10 @@ def changeclick():
     docu.config(state="normal")
     busy.config(state="normal")
 
+    if free.get("1.0", END) == '\n':
+        messagebox.showerror("Error!!!", "Please input before firing.")
+        return
+
     a = int(inside.get("1.0", END))
     b = int(busy.get("1.0", END))
 
@@ -181,9 +187,12 @@ def changeclick():
 def endclick():
     free.config(state="normal")
     docu.config(state="normal")
-
+    if free.get("1.0", END) == '\n':
+        messagebox.showerror("Error!!!", "Please input before firing.")
+        return
     a = int(free.get("1.0", END))
     b = int(docu.get("1.0", END))
+
 
     if b==0 :
         messagebox.showerror("Error!!!", "Transition 'end' is not enabled.")
@@ -228,6 +237,10 @@ def enter():
 
     wait.config(state="normal")
     free.config(state="normal")
+    docu.config(state="normal")
+    done.config(state="normal")
+    busy.config(state="normal")
+    inside.config(state="normal")
 
     wait.delete("1.0", END)
     free.delete("1.0", END)
