@@ -231,6 +231,11 @@ def enter():
 
     wait.delete("1.0", END)
     free.delete("1.0", END)
+    busy.delete("1.0", END)
+    inside.delete("1.0", END)
+    done.delete("1.0", END)
+    docu.delete("1.0", END)
+
 
     a = int(a)
     b = int(b)
