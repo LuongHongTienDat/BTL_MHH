@@ -549,7 +549,7 @@ def UI_3():
     window = tk.Tk()
     window.resizable(False, False)
 
-    window.title("The patients' Petri Net")
+    window.title("The clinic's Petri Net")
     frame = Frame(window, bd=10, bg="silver")
     frame.pack(side=TOP)
     frame2 = Frame(window, bd=10, bg="silver")
