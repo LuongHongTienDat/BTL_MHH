@@ -38,7 +38,7 @@ for i in range(n + 1):
         if j > 0:
             canvas.create_line(space * (j + 1) + space / 2 * i, space * (i + 1) + (16 - n) * 0.8, 
                                 space * j + space / 2 * (i + 1), space * (i + 2) - (16 - n) * 0.8,
-                                arrow = tk.LAST, fill = "chocolate")
+                                arrow = tk.LAST, fill = "navy")
 
     a, b = b, a
     a -= 1
@@ -60,11 +60,11 @@ La1 = Label(legend_frame, text = "------>", fg = "violet")
 La1.pack()
 La1.place(x = 60, y = 30)
 
-La2 = Label(legend_frame, text = "------>", fg = "olive")
+La2 = Label(legend_frame, text = "------>", fg = "navy")
 La2.pack()
 La2.place(x = 60, y = 45)
 
-La3 = Label(legend_frame, text = "------>", fg = "chocolate")
+La3 = Label(legend_frame, text = "------>", fg = "olive")
 La3.pack()
 La3.place(x = 60, y = 60)
 
